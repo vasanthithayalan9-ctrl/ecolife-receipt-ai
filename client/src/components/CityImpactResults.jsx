@@ -1,18 +1,18 @@
 import { motion } from 'framer-motion';
 import { ArrowTrendingUpIcon, CubeTransparentIcon, HeartIcon, SparklesIcon, FireIcon, SunIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 
-const metrics = [
-  { label: 'Monthly CO2 Reduction', value: '25,000 kg', icon: FireIcon },
-  { label: 'Yearly CO2 Reduction', value: '300,000 kg', icon: ArrowTrendingUpIcon },
-  { label: 'Plastic Items Avoided', value: '120,000', icon: CubeTransparentIcon },
-  { label: 'Healthier Product Choices', value: '82%', icon: HeartIcon },
-  { label: 'Community Green Score', value: '91/100', icon: SparklesIcon },
-  { label: 'Tree Equivalent', value: '12,000 trees', icon: SparklesIcon },
-  { label: 'Air Quality Contribution', value: '+14%', icon: SunIcon },
-  { label: 'Lifestyle Risk Reduction', value: '31%', icon: ShieldCheckIcon }
-];
+const iconMap = {
+  'Monthly CO2 Reduction': FireIcon,
+  'Yearly CO2 Reduction': ArrowTrendingUpIcon,
+  'Plastic Items Avoided': CubeTransparentIcon,
+  'Healthier Product Choices': HeartIcon,
+  'Community Green Score': SparklesIcon,
+  'Tree Equivalent': SparklesIcon,
+  'Air Quality Contribution': SunIcon,
+  'Lifestyle Risk Reduction': ShieldCheckIcon
+};
 
-export default function CityImpactResults() {
+export default function CityImpactResults({ metrics = [] }) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -21,7 +21,7 @@ export default function CityImpactResults() {
       className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4"
     >
       {metrics.map((item) => {
-        const Icon = item.icon;
+        const Icon = iconMap[item.label] || SparklesIcon;
         return (
           <div key={item.label} className="rounded-[1.6rem] border border-emerald-700/40 bg-gradient-to-br from-emerald-950/90 to-emerald-900/80 p-5 shadow-[0_18px_60px_rgba(3,20,13,0.22)]">
             <div className="flex items-start justify-between gap-3">
