@@ -1,0 +1,6 @@
+"""Shared constants for the EcoLife Receipt AI backend."""
+
+DEFAULT_SCORE_MAX = 100.0
+DEFAULT_CARBON_WEIGHT = 0.4
+DEFAULT_HEALTH_WEIGHT = 0.35
+DEFAULT_POLLUTION_WEIGHT = 0.25

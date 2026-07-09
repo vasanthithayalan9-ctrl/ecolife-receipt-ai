@@ -1,0 +1,128 @@
+{
+  "navbar": {
+    "title": "EcoLife Receipt AI",
+    "subtitle": "Smarter eco shopping",
+    "home": "Home",
+    "scanner": "Scanner",
+    "results": "Results",
+    "basket": "Better Basket",
+    "city": "City Impact",
+    "voice": "Voice",
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Customize your experience, language preferences, and privacy controls.",
+    "preferencesTitle": "Preferences",
+    "enableVoiceGuidance": "Enable voice guidance",
+    "showRecommendations": "Show alternative recommendations",
+    "languageTitle": "Language",
+    "languageChoose": "Choose your preferred language"
+  },
+  "home": {
+    "banner": "Scan receipts instantly",
+    "heading": "Measure pollution and health impact",
+    "description": "Switch to better product choices and keep families, shops and cities thriving.",
+    "startButton": "Start analysis",
+    "learnMoreButton": "Learn more"
+  },
+  "landing": {
+    "intro": "Eco-tech for healthier shopping habits",
+    "heading": "Turn everyday receipts into greener choices.",
+    "description": "EcoLife Receipt AI helps families, shopkeepers, and city planners understand the environmental and health impact of everyday purchases through intelligent insights and voice-assisted guidance.",
+    "exploreDemo": "Explore Demo",
+    "tryVoice": "Try EcoVoice",
+    "featuresTitle": "What the app covers",
+    "features": [
+      "Receipt upload and manual bill entry",
+      "Carbon emission and health insights",
+      "Smarter basket recommendations",
+      "Multi-role dashboards and eco voice assistant"
+    ]
+  },
+  "voicePage": {
+    "title": "Voice Assistant",
+    "description": "Voice-guided eco insights in your chosen language.",
+    "hint": "Speak or tap the microphone to start."
+  },
+  "receipt": {
+    "title": "Premium receipt analysis experience",
+    "description": "A clean, reusable interface built with Tailwind CSS, Heroicons, React hooks, responsive grids, and motion placeholders."
+  },
+  "scanner": {
+    "banner": "AI-powered receipt intelligence",
+    "heading": "Scan Your Shopping Receipt",
+    "description": "Upload your shopping receipt to understand its environmental and health impact with instant, premium insights.",
+    "uploadButton": "Upload receipt",
+    "sampleButton": "See sample report",
+    "steps": {
+      "upload": "Upload",
+      "analyze": "Analyze",
+      "improve": "Improve",
+      "savePlanet": "Save Planet"
+    }
+  },
+  "results": {
+    "noReceipt": "No receipt analyzed yet.",
+    "pleaseScan": "Please scan a receipt first.",
+    "viewBetterBasket": "View Better Basket",
+    "viewCityImpact": "View City Impact"
+  },
+  "city": {
+    "title": "City Impact Simulator",
+    "description": "See how a greener shopping behavior shift can create measurable change at neighborhood and city scale.",
+    "backToResults": "Back to Results",
+    "viewBetterBasket": "View Better Basket",
+    "familyDashboard": "Family Dashboard"
+  },
+  "voice": {
+    "section": "EcoVoice AI",
+    "heading": "EcoVoice AI",
+    "description": "Use your voice to guide the receipt analysis experience.",
+    "options": {
+      "speak": "Speak Product",
+      "upload": "Upload by Voice",
+      "analyze": "Analyze by Voice"
+    },
+    "language": "Language",
+    "transcriptPlaceholder": "Transcript will appear here",
+    "startListening": "Start Listening",
+    "listening": "Listening…",
+    "unsupported": "Speech Recognition is not supported in this browser. This demo uses a placeholder experience.",
+    "captured": "Captured: {{text}}",
+    "listeningStatus": "Listening for your voice command...",
+    "unsupportedSpeech": "Speech Synthesis is not supported in this browser.",
+    "optionsTitle": "Options",
+    "error": "Voice input error: {{error}}",
+    "close": "Close"
+  },
+  "voiceSummary": {
+    "title": "EcoVoice Summary",
+    "heading": "Read your report aloud",
+    "readReport": "Read My Report",
+    "explainInTamil": "Explain in Tamil",
+    "explainInEnglish": "Explain in English",
+    "askEcoVoice": "Ask EcoVoice",
+    "reportReady": "Your receipt impact report is ready. Your basket has strong opportunities to reduce emissions and improve health.",
+    "lowerImpact": "Your report highlights lower-impact choices and healthier alternatives for your basket.",
+    "tamilReport": "உங்கள் ரசீதின் தாக்கம் தயாராக உள்ளது. உங்கள் வாங்குதல்களில் கார்பன் குறைக்க பல வாய்ப்புகள் உள்ளன."
+  },
+  "voiceBasket": {
+    "title": "EcoVoice Basket Assistant",
+    "heading": "Guide your better basket aloud",
+    "readBetterBasket": "Read Better Basket",
+    "explainSwapsEnglish": "Explain Swaps in English",
+    "explainSwapsTamil": "Explain Swaps in Tamil",
+    "askEcoVoice": "Ask EcoVoice",
+    "basketReady": "Your better basket is ready. It reduces carbon, improves health, and lowers waste.",
+    "swapsEnglish": "Here are the main swaps. Replace plastic bottles, soft drinks, and imported produce with reusable and local choices.",
+    "swapsTamil": "இந்த மாற்றங்கள் உங்கள் வாங்குதலை கார்பனைக் குறைத்து, ஆரோக்கியத்தையும் மேம்படுத்தும்."
+  },
+  "uploader": {
+    "title": "Receipt Uploader",
+    "heading": "Upload a receipt or preview a sample",
+    "loadDemo": "Load demo receipt",
+    "previewTitle": "Preview",
+    "previewPlaceholder": "Click the button to explore a sample receipt before analysis."
+  }
+}

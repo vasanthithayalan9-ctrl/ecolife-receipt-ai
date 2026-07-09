@@ -1,0 +1,13 @@
+{
+  "alternatives": [
+    {"original": "plastic bottle", "replacement": "steel bottle", "reason": "Reusable and reduces single-use plastic."},
+    {"original": "soft drink", "replacement": "fresh juice", "reason": "Lower sugar and often less packaging."},
+    {"original": "chicken", "replacement": "lentils", "reason": "Plant proteins have lower carbon."},
+    {"original": "chips", "replacement": "roasted nuts", "reason": "Healthier and often less packaging."},
+    {"original": "imported apple", "replacement": "local banana", "reason": "Local fruit reduces transport emissions."},
+    {"original": "disposable bag", "replacement": "cloth bag", "reason": "Reusable bags cut plastic waste."},
+    {"original": "white bread", "replacement": "whole wheat bread", "reason": "Healthier grain choice."},
+    {"original": "packaged noodles", "replacement": "millets", "reason": "Less processed, lower packaging."},
+    {"original": "shampoo sachet", "replacement": "refill shampoo bottle", "reason": "Refill systems reduce sachet waste."}
+  ]
+}

@@ -1,0 +1,37 @@
+import express from 'express';
+import cors from 'cors';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import analyticsRoutes from './routes/analytics.js';
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
+
+app.get('/api/health', (_req, res) => {
+  res.json({ status: 'ok', message: 'EcoLife Receipt AI API is running' });
+});
+
+app.get('/api/demo', (_req, res) => {
+  res.json({
+    message: 'Starter API ready for receipt analysis',
+    features: [
+      'Receipt intake',
+      'Carbon impact',
+      'Health and pollution insights',
+      'Eco voice assistant'
+    ]
+  });
+});
+
+app.use('/api/analytics', analyticsRoutes);
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, '../public')));
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});

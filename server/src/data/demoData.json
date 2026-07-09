@@ -1,0 +1,11 @@
+{
+  "receipts": [],
+  "users": [
+    {
+      "id": 1,
+      "role": "family",
+      "name": "Demo Family"
+    }
+  ],
+  "recommendations": []
+}
