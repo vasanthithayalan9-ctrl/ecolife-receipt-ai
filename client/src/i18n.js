@@ -23,6 +23,8 @@ i18n.use(initReactI18next).init({
   resources,
   lng: defaultLanguage,
   fallbackLng: 'en',
+  supportedLngs: ['en', 'ta', 'hi', 'te', 'kn', 'ml'],
+  load: 'languageOnly',
   interpolation: { escapeValue: false }
 });
 

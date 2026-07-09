@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function ReceiptSummary() {
+  const { t } = useTranslation();
   const [data, setData] = useState({ receipts: 0 });
 
   useEffect(() => {
@@ -19,25 +21,25 @@ export default function ReceiptSummary() {
   }, []);
 
   const stats = [
-    { id: 'total', label: 'Total Products', value: data.receipts, color: 'from-emerald-500 to-emerald-600' },
-    { id: 'high-carbon', label: 'High Carbon Products', value: 0, color: 'from-red-500 to-red-600' },
-    { id: 'healthy', label: 'Healthy Products', value: 0, color: 'from-lime-400 to-lime-500' },
-    { id: 'plastic', label: 'Plastic Products', value: 0, color: 'from-sky-400 to-sky-500' },
-    { id: 'organic', label: 'Organic Products', value: 0, color: 'from-emerald-300 to-emerald-400' },
-    { id: 'imported', label: 'Imported Products', value: 0, color: 'from-violet-400 to-violet-500' },
-    { id: 'local', label: 'Local Products', value: 0, color: 'from-yellow-400 to-yellow-500' }
+    { id: 'total', label: t('receiptSummary.stats.totalProducts'), value: data.receipts, color: 'from-emerald-500 to-emerald-600' },
+    { id: 'high-carbon', label: t('receiptSummary.stats.highCarbonProducts'), value: 0, color: 'from-red-500 to-red-600' },
+    { id: 'healthy', label: t('receiptSummary.stats.healthyProducts'), value: 0, color: 'from-lime-400 to-lime-500' },
+    { id: 'plastic', label: t('receiptSummary.stats.plasticProducts'), value: 0, color: 'from-sky-400 to-sky-500' },
+    { id: 'organic', label: t('receiptSummary.stats.organicProducts'), value: 0, color: 'from-emerald-300 to-emerald-400' },
+    { id: 'imported', label: t('receiptSummary.stats.importedProducts'), value: 0, color: 'from-violet-400 to-violet-500' },
+    { id: 'local', label: t('receiptSummary.stats.localProducts'), value: 0, color: 'from-yellow-400 to-yellow-500' }
   ];
 
   return (
     <section className="mt-10 rounded-3xl bg-emerald-950/60 p-6 ring-1 ring-emerald-700/30">
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-xs font-medium uppercase tracking-wider text-emerald-300">SECTION 6</div>
-          <h3 className="mt-1 text-2xl font-semibold text-emerald-50">Receipt Summary</h3>
-          <p className="mt-1 text-sm text-emerald-200/70">Overview of product categories detected on the receipt.</p>
+          <div className="text-xs font-medium uppercase tracking-wider text-emerald-300">{t('receiptSummary.sectionLabel')}</div>
+          <h3 className="mt-1 text-2xl font-semibold text-emerald-50">{t('receiptSummary.heading')}</h3>
+          <p className="mt-1 text-sm text-emerald-200/70">{t('receiptSummary.description')}</p>
         </div>
         <div className="hidden sm:flex items-center gap-3">
-          <button className="rounded-full bg-emerald-700/20 px-3 py-2 text-sm text-emerald-200">Show</button>
+          <button className="rounded-full bg-emerald-700/20 px-3 py-2 text-sm text-emerald-200">{t('receiptSummary.showButton')}</button>
         </div>
       </div>
 

@@ -1,7 +1,9 @@
 import { ClipboardDocumentListIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export default function ManualBillEntry() {
+  const { t } = useTranslation();
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -14,23 +16,23 @@ export default function ManualBillEntry() {
           <ClipboardDocumentListIcon className="h-6 w-6" />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300">Manual Bill Entry</p>
-          <h2 className="mt-1 text-2xl font-semibold text-white">Complete your entry quickly</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300">{t('manualBillEntry.title')}</p>
+          <h2 className="mt-1 text-2xl font-semibold text-white">{t('manualBillEntry.heading')}</h2>
         </div>
       </div>
 
       <form className="mt-6 space-y-4" aria-label="Manual bill entry form">
-        <label className="sr-only" htmlFor="shop-name">Shop name</label>
-        <input id="shop-name" className="w-full rounded-2xl border border-emerald-700/70 bg-emerald-950/70 px-4 py-3 text-emerald-50 outline-none transition focus:border-emerald-400" placeholder="Shop name" />
+        <label className="sr-only" htmlFor="shop-name">{t('manualBillEntry.shopNameLabel')}</label>
+        <input id="shop-name" className="w-full rounded-2xl border border-emerald-700/70 bg-emerald-950/70 px-4 py-3 text-emerald-50 outline-none transition focus:border-emerald-400" placeholder={t('manualBillEntry.shopNamePlaceholder')} />
 
-        <label className="sr-only" htmlFor="item-name">Item name</label>
-        <input id="item-name" className="w-full rounded-2xl border border-emerald-700/70 bg-emerald-950/70 px-4 py-3 text-emerald-50 outline-none transition focus:border-emerald-400" placeholder="Item name" />
+        <label className="sr-only" htmlFor="item-name">{t('manualBillEntry.itemNameLabel')}</label>
+        <input id="item-name" className="w-full rounded-2xl border border-emerald-700/70 bg-emerald-950/70 px-4 py-3 text-emerald-50 outline-none transition focus:border-emerald-400" placeholder={t('manualBillEntry.itemNamePlaceholder')} />
 
-        <label className="sr-only" htmlFor="quantity">Quantity</label>
-        <input id="quantity" className="w-full rounded-2xl border border-emerald-700/70 bg-emerald-950/70 px-4 py-3 text-emerald-50 outline-none transition focus:border-emerald-400" placeholder="Quantity" />
+        <label className="sr-only" htmlFor="quantity">{t('manualBillEntry.quantityLabel')}</label>
+        <input id="quantity" className="w-full rounded-2xl border border-emerald-700/70 bg-emerald-950/70 px-4 py-3 text-emerald-50 outline-none transition focus:border-emerald-400" placeholder={t('manualBillEntry.quantityPlaceholder')} />
 
         <button type="submit" className="w-full rounded-2xl bg-gradient-to-r from-emerald-500 to-lime-500 px-4 py-3 font-semibold text-white shadow-lg shadow-emerald-950/30 transition hover:-translate-y-0.5 hover:brightness-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300">
-          Analyze receipt
+          {t('manualBillEntry.analyzeButton')}
         </button>
       </form>
     </motion.section>

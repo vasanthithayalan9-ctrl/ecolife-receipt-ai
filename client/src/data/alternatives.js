@@ -1,0 +1,20 @@
+export const alternatives = [
+  { id: 11, name: 'cloth bag', category: 'containers', carbonFactor: 1.0, healthScore: 92, pollutionScore: 16, plasticScore: 0, priceEstimate: 120, reason: 'A reusable bag with zero plastic waste and long-term savings.' },
+  { id: 12, name: 'paper bag', category: 'packaging', carbonFactor: 0.4, healthScore: 90, pollutionScore: 40, plasticScore: 1, priceEstimate: 15, reason: 'Paper bags are better than plastic for short-term use when recycled.' },
+  { id: 13, name: 'steel bottle', category: 'containers', carbonFactor: 1.0, healthScore: 94, pollutionScore: 14, plasticScore: 0, priceEstimate: 350, reason: 'Reusable bottles reduce plastic waste and are ideal for daily hydration.' },
+  { id: 14, name: 'fresh juice', category: 'beverages', carbonFactor: 0.6, healthScore: 86, pollutionScore: 32, plasticScore: 3, priceEstimate: 90, reason: 'Fresh juice is a healthier drink choice than soft drinks.' },
+  { id: 15, name: 'lentils', category: 'legumes', carbonFactor: 0.9, healthScore: 92, pollutionScore: 20, plasticScore: 1, priceEstimate: 120, reason: 'Legumes are low-carbon protein alternatives to animal products.' },
+  { id: 16, name: 'roasted nuts', category: 'snacks', carbonFactor: 1.0, healthScore: 80, pollutionScore: 28, plasticScore: 3, priceEstimate: 220, reason: 'Nuts are a nutritious snack alternative to packaged chips.' },
+  { id: 17, name: 'vegetables', category: 'produce', carbonFactor: 0.5, healthScore: 98, pollutionScore: 16, plasticScore: 1, priceEstimate: 75, reason: 'Seasonal vegetables are an eco-friendly and healthy staple.' },
+  { id: 30, name: 'millets', category: 'grains', carbonFactor: 0.7, healthScore: 86, pollutionScore: 18, plasticScore: 1, priceEstimate: 95, reason: 'Millets are nutritious and have a lower footprint than rice.' },
+  { id: 33, name: 'oat milk', category: 'beverages', carbonFactor: 0.9, healthScore: 88, pollutionScore: 22, plasticScore: 2, priceEstimate: 170, reason: 'Oat milk is a climate-friendly alternative to dairy milk.' },
+  { id: 45, name: 'tofu', category: 'proteins', carbonFactor: 1.1, healthScore: 88, pollutionScore: 22, plasticScore: 2, priceEstimate: 130, reason: 'Tofu is a lower-carbon plant protein substitute for cheese and meat.' },
+  { id: 46, name: 'berries', category: 'fruits', carbonFactor: 1.1, healthScore: 94, pollutionScore: 34, plasticScore: 3, priceEstimate: 220, reason: 'Berries are a more natural sweet snack than sugary biscuits or candy.' },
+  { id: 47, name: 'wholegrain pasta', category: 'grains', carbonFactor: 1.0, healthScore: 80, pollutionScore: 28, plasticScore: 5, priceEstimate: 85, reason: 'Wholegrain pasta is a healthier and more sustainable carb option.' },
+  { id: 48, name: 'dried fruit', category: 'snacks', carbonFactor: 0.9, healthScore: 70, pollutionScore: 32, plasticScore: 4, priceEstimate: 140, reason: 'Dried fruit offers sweetness with more nutrients than candy.' },
+  { id: 44, name: 'fresh herbs', category: 'produce', carbonFactor: 0.3, healthScore: 98, pollutionScore: 16, plasticScore: 1, priceEstimate: 45, reason: 'Herbs add flavor naturally and help reduce oil or salt use.' },
+  { id: 24, name: 'refill shampoo bottle', category: 'hygiene', carbonFactor: 0.5, healthScore: 90, pollutionScore: 20, plasticScore: 1, priceEstimate: 250, reason: 'Refill systems cut down on single-use sachets and plastic waste.' },
+  { id: 22, name: 'tea', category: 'beverages', carbonFactor: 0.6, healthScore: 92, pollutionScore: 18, plasticScore: 1, priceEstimate: 150, reason: 'Tea is a lower-carbon beverage option than coffee and instant drinks.' },
+  { id: 31, name: 'yogurt', category: 'dairy', carbonFactor: 1.1, healthScore: 84, pollutionScore: 22, plasticScore: 2, priceEstimate: 65, reason: 'Yogurt is a simpler dairy option than flavored yogurt drinks.' },
+  { id: 48, name: 'dried fruit', category: 'snacks', carbonFactor: 0.9, healthScore: 70, pollutionScore: 32, plasticScore: 4, priceEstimate: 140, reason: 'Dried fruit is a wholesome alternative to candy and cookies.' }
+];

@@ -9,11 +9,14 @@ import AnalysisPreview from '../components/AnalysisPreview';
 import LoadingAnimation from '../components/LoadingAnimation';
 import ActionButtons from '../components/ActionButtons';
 
+import { useTranslation } from 'react-i18next';
+
 export default function ReceiptPage() {
+  const { t } = useTranslation();
   const [demoLoaded, setDemoLoaded] = useState(false);
   const [analyzing, setAnalyzing] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
-  const demoItems = ['Milk', 'Chicken', 'Plastic Bottle', 'Soft Drink', 'Rice', 'Soap'];
+  const demoItems = [t('receipt.demoItems.0'), t('receipt.demoItems.1'), t('receipt.demoItems.2'), t('receipt.demoItems.3'), t('receipt.demoItems.4'), t('receipt.demoItems.5')];
 
   useEffect(() => {
     if (!analyzing) return undefined;
@@ -40,9 +43,9 @@ export default function ReceiptPage() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16" aria-label="Receipt analysis experience">
       <div className="mb-8">
-        <div className="text-xs font-medium uppercase tracking-[0.35em] text-emerald-300">SECTION 13</div>
-        <h1 className="mt-3 text-4xl font-semibold text-white">Premium receipt analysis experience</h1>
-        <p className="mt-3 max-w-2xl text-emerald-100/70">A clean, reusable interface built with Tailwind CSS, Heroicons, React hooks, responsive grids, and motion placeholders.</p>
+        <div className="text-xs font-medium uppercase tracking-[0.35em] text-emerald-300">{t('receipt.sectionLabel')}</div>
+        <h1 className="mt-3 text-4xl font-semibold text-white">{t('receipt.title')}</h1>
+        <p className="mt-3 max-w-2xl text-emerald-100/70">{t('receipt.description')}</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -64,14 +67,14 @@ export default function ReceiptPage() {
       </div>
 
       <div className="mt-10 rounded-[2rem] border border-emerald-700/40 bg-emerald-950/70 p-8">
-        <div className="text-xs font-medium uppercase tracking-[0.3em] text-emerald-300">SECTION 11</div>
-        <h2 className="mt-2 text-2xl font-semibold text-white">Accessibility</h2>
+        <div className="text-xs font-medium uppercase tracking-[0.3em] text-emerald-300">{t('receipt.accessibilitySectionLabel')}</div>
+        <h2 className="mt-2 text-2xl font-semibold text-white">{t('receipt.accessibilityHeading')}</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {[
-            ['Large buttons', 'Touch-friendly controls with generous spacing.'],
-            ['Keyboard accessible', 'Focusable inputs and buttons with visible focus states.'],
-            ['Screen reader labels', 'Clear labels and aria attributes for assistive tech.'],
-            ['Dark Mode support', 'High-contrast visuals designed for low-light use.']
+            [t('receipt.accessibility.largeButtons.title'), t('receipt.accessibility.largeButtons.description')],
+            [t('receipt.accessibility.keyboardAccessible.title'), t('receipt.accessibility.keyboardAccessible.description')],
+            [t('receipt.accessibility.screenReader.title'), t('receipt.accessibility.screenReader.description')],
+            [t('receipt.accessibility.darkMode.title'), t('receipt.accessibility.darkMode.description')]
           ].map(([title, description]) => (
             <div key={title} className="rounded-2xl border border-emerald-700/40 bg-emerald-900/70 p-4">
               <h3 className="text-lg font-semibold text-emerald-50">{title}</h3>

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-
-const loadingSteps = [
-  'Analyzing Carbon...',
-  'Classifying Products...',
-  'Finding Better Alternatives...',
-  'Generating Eco Score...'
-];
+import { useTranslation } from 'react-i18next';
 
 export default function ReceiptActions({ onReset } ) {
+  const { t } = useTranslation();
   const [analyzing, setAnalyzing] = useState(false);
   const [saved, setSaved] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
+
+  const loadingSteps = [
+    t('receiptActions.loadingSteps.0'),
+    t('receiptActions.loadingSteps.1'),
+    t('receiptActions.loadingSteps.2'),
+    t('receiptActions.loadingSteps.3')
+  ];
 
   useEffect(() => {
     if (!analyzing) return;
@@ -20,7 +22,7 @@ export default function ReceiptActions({ onReset } ) {
     }, 1200);
 
     return () => window.clearInterval(timer);
-  }, [analyzing]);
+  }, [analyzing, loadingSteps.length]);
 
   async function handleAnalyze() {
     setAnalyzing(true);
@@ -58,14 +60,14 @@ export default function ReceiptActions({ onReset } ) {
           onClick={handleReset}
           className="rounded-xl border border-emerald-700/40 bg-emerald-900/40 px-4 py-2 text-sm text-emerald-100 hover:bg-emerald-900/60"
         >
-          Reset
+          {t('receiptActions.reset')}
         </button>
 
         <button
           onClick={handleSaveDraft}
           className={`rounded-xl border border-emerald-700/40 bg-emerald-700/10 px-4 py-2 text-sm text-emerald-100 hover:bg-emerald-700/20 ${saved ? 'ring-2 ring-emerald-400/40' : ''}`}
         >
-          {saved ? 'Draft saved' : 'Save Draft'}
+          {saved ? t('receiptActions.draftSaved') : t('receiptActions.saveDraft')}
         </button>
 
         <button
@@ -73,7 +75,7 @@ export default function ReceiptActions({ onReset } ) {
           disabled={analyzing}
           className={`rounded-xl bg-emerald-500 px-4 py-2 text-sm font-medium text-white ${analyzing ? 'opacity-70' : 'hover:brightness-95'}`}
         >
-          {analyzing ? 'Analyzing…' : 'Analyze Receipt'}
+          {analyzing ? t('receiptActions.analyzing') : t('receiptActions.analyzeReceipt')}
         </button>
       </div>
 
@@ -94,7 +96,7 @@ export default function ReceiptActions({ onReset } ) {
             </div>
 
             <div>
-              <p className="text-lg font-semibold text-emerald-50">While analyzing</p>
+              <p className="text-lg font-semibold text-emerald-50">{t('receiptActions.whileAnalyzing')}</p>
               <p className="mt-2 text-sm text-emerald-200/80">{loadingSteps[stepIndex]}</p>
             </div>
           </div>

@@ -1,66 +1,31 @@
 import { motion } from 'framer-motion';
 
-const rows = [
-  {
-    name: 'Milk',
-    category: 'Dairy',
-    quantity: 2,
-    price: '₹120',
-    carbon: '0.42 kg',
-    health: 'Low',
-    pollution: 'Medium',
-    alternative: 'Local oat milk',
-    co2Saved: '0.18 kg',
-    healthBenefit: 'Lower saturated fat',
-    riskLevel: 'Low'
-  },
-  {
-    name: 'Plastic Bottle',
-    category: 'Packaging',
-    quantity: 1,
-    price: '₹50',
-    carbon: '0.34 kg',
-    health: 'High',
-    pollution: 'High',
-    alternative: 'Reusable bottle',
-    co2Saved: '0.24 kg',
-    healthBenefit: 'Less microplastic exposure',
-    riskLevel: 'High'
-  },
-  {
-    name: 'Soft Drink',
-    category: 'Beverage',
-    quantity: 2,
-    price: '₹100',
-    carbon: '0.56 kg',
-    health: 'High',
-    pollution: 'Medium',
-    alternative: 'Sparkling water',
-    co2Saved: '0.24 kg',
-    healthBenefit: 'Lower sugar',
-    riskLevel: 'High'
-  },
-  {
-    name: 'Imported Apple',
-    category: 'Produce',
-    quantity: 3,
-    price: '₹180',
-    carbon: '0.48 kg',
-    health: 'Medium',
-    pollution: 'Medium',
-    alternative: 'Local apple',
-    co2Saved: '0.16 kg',
-    healthBenefit: 'Lower transport impact',
-    riskLevel: 'Medium'
-  }
-];
+import { products as productCatalog } from '../data/products';
+
+function resolveRiskLevel(item) {
+  if (item.healthScore < 40 || item.pollutionScore > 70) return 'High';
+  if (item.healthScore < 70 || item.pollutionScore > 40) return 'Medium';
+  return 'Low';
+}
+
+function formatCurrency(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? `₹${number}` : '-';
+}
+
+function findAlternative(item) {
+  const matching = productCatalog.find((product) => product.name.toLowerCase() === String(item.name || '').toLowerCase());
+  if (!matching || !matching.alternativeId) return null;
+  const alt = productCatalog.find((product) => product.id === matching.alternativeId);
+  return alt ? { name: alt.name, healthBenefit: alt.reason, co2Saved: Number(Math.max(0, item.carbonTotal - (alt.carbonFactor || 0) * (item.quantity || 1)).toFixed(1)) } : null;
+}
 
 function Badge({ value }) {
   const tone = value === 'Low' ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-200' : value === 'Medium' ? 'border-amber-500/30 bg-amber-500/10 text-amber-200' : 'border-rose-500/30 bg-rose-500/10 text-rose-200';
   return <span className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${tone}`}>{value}</span>;
 }
 
-export default function ProductImpactTable() {
+export default function ProductImpactTable({ items = [] }) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -82,21 +47,25 @@ export default function ProductImpactTable() {
             </tr>
           </thead>
           <tbody className="divide-y divide-emerald-700/20 bg-emerald-950/60 text-emerald-100/80">
-            {rows.map((row) => (
-              <tr key={row.name} className="transition hover:bg-emerald-900/60">
-                <td className="px-4 py-3 font-medium text-white">{row.name}</td>
-                <td className="px-4 py-3">{row.category}</td>
-                <td className="px-4 py-3">{row.quantity}</td>
-                <td className="px-4 py-3">{row.price}</td>
-                <td className="px-4 py-3">{row.carbon}</td>
-                <td className="px-4 py-3"><Badge value={row.health} /></td>
-                <td className="px-4 py-3"><Badge value={row.pollution} /></td>
-                <td className="px-4 py-3">{row.alternative}</td>
-                <td className="px-4 py-3">{row.co2Saved}</td>
-                <td className="px-4 py-3">{row.healthBenefit}</td>
-                <td className="px-4 py-3"><Badge value={row.riskLevel} /></td>
-              </tr>
-            ))}
+            {items.map((item, index) => {
+              const alternative = findAlternative(item);
+              const riskLevel = resolveRiskLevel(item);
+              return (
+                <tr key={`${item.name}-${index}`} className="transition hover:bg-emerald-900/60">
+                  <td className="px-4 py-3 font-medium text-white">{item.name || 'Unknown'}</td>
+                  <td className="px-4 py-3">{item.category || 'Unknown'}</td>
+                  <td className="px-4 py-3">{item.quantity || 0}</td>
+                  <td className="px-4 py-3">{formatCurrency(item.price)}</td>
+                  <td className="px-4 py-3">{`${Number(item.carbonTotal || 0).toFixed(1)} kg`}</td>
+                  <td className="px-4 py-3"><Badge value={item.healthScore < 50 ? 'High' : item.healthScore < 70 ? 'Medium' : 'Low'} /></td>
+                  <td className="px-4 py-3"><Badge value={item.pollutionScore > 70 ? 'High' : item.pollutionScore > 40 ? 'Medium' : 'Low'} /></td>
+                  <td className="px-4 py-3">{alternative?.name || 'N/A'}</td>
+                  <td className="px-4 py-3">{alternative?.co2Saved != null ? `${alternative.co2Saved} kg` : 'N/A'}</td>
+                  <td className="px-4 py-3">{alternative?.healthBenefit || 'Better option'}</td>
+                  <td className="px-4 py-3"><Badge value={riskLevel} /></td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

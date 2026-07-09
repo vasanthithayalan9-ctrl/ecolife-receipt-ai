@@ -1,15 +1,10 @@
 import { motion } from 'framer-motion';
 import { SparklesIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from 'react-i18next';
 
-const recommendations = [
-  'Replace plastic products with reusable or refillable options.',
-  'Prefer local products to reduce transport emissions.',
-  'Reduce sugary drinks and choose water or herbal tea.',
-  'Choose reusable packaging whenever possible.',
-  'Buy seasonal items for better freshness and lower impact.'
-];
+export default function AIRecommendationPanel({ recommendations = [] }) {
+  const { t } = useTranslation();
 
-export default function AIRecommendationPanel() {
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -22,16 +17,37 @@ export default function AIRecommendationPanel() {
           <SparklesIcon className="h-6 w-6" />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300">AI Recommendations</p>
-          <h2 className="mt-1 text-2xl font-semibold text-white">EcoLife AI Recommendations</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300">{t('recommendationPanel.title')}</p>
+          <h2 className="mt-1 text-2xl font-semibold text-white">{t('recommendationPanel.heading')}</h2>
         </div>
       </div>
-      <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {recommendations.map((item) => (
-          <div key={item} className="rounded-[1.3rem] border border-emerald-700/40 bg-emerald-950/70 p-4 text-sm text-emerald-100/80">
-            {item}
+      <div className="mt-6 grid gap-4 xl:grid-cols-2">
+        {recommendations.length > 0 ? (
+          recommendations.map((recommendation, index) => (
+            <div key={`${recommendation.currentProduct}-${index}`} className="rounded-[1.3rem] border border-emerald-700/40 bg-emerald-950/70 p-5 text-sm text-emerald-100/80">
+              <p className="text-sm text-emerald-200/80">Current Product</p>
+              <p className="mt-1 font-semibold text-white">{recommendation.currentProduct}</p>
+              <p className="mt-3 text-sm text-emerald-200/80">Alternative Product</p>
+              <p className="mt-1 font-semibold text-white">{recommendation.alternativeProduct}</p>
+              <p className="mt-3 text-sm text-emerald-200/80">Reason</p>
+              <p className="mt-1 text-sm text-emerald-100/80">{recommendation.reason}</p>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                <div className="rounded-2xl bg-emerald-950/80 p-3 text-xs uppercase tracking-[0.18em] text-emerald-300">Carbon Saved</div>
+                <div className="rounded-2xl bg-emerald-950/80 p-3 text-xs uppercase tracking-[0.18em] text-emerald-300">Health Benefit</div>
+                <div className="rounded-2xl bg-emerald-950/80 p-3 text-sm text-white">{recommendation.carbonSaved} kg</div>
+                <div className="rounded-2xl bg-emerald-950/80 p-3 text-sm text-white">{recommendation.healthBenefit}</div>
+                <div className="rounded-2xl bg-emerald-950/80 p-3 text-xs uppercase tracking-[0.18em] text-emerald-300">Pollution Benefit</div>
+                <div className="rounded-2xl bg-emerald-950/80 p-3 text-xs uppercase tracking-[0.18em] text-emerald-300">Cost Note</div>
+                <div className="rounded-2xl bg-emerald-950/80 p-3 text-sm text-white">{recommendation.pollutionBenefit}</div>
+                <div className="rounded-2xl bg-emerald-950/80 p-3 text-sm text-white">{recommendation.costNote}</div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="rounded-[1.3rem] border border-emerald-700/40 bg-emerald-950/70 p-6 text-sm text-emerald-100/80">
+            No recommendations available yet.
           </div>
-        ))}
+        )}
       </div>
     </motion.section>
   );

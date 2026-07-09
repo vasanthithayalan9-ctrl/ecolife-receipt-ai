@@ -1,16 +1,10 @@
 import { motion } from 'framer-motion';
 import { ArrowTrendingUpIcon, HeartIcon, SparklesIcon, FireIcon, CubeTransparentIcon, CurrencyDollarIcon, BoltIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 
-const metrics = [
-  { label: 'Total CO2 Emission', value: '3.8 kg', icon: FireIcon, gradient: 'from-rose-500 to-orange-500', ring: 78, accent: 'text-rose-200' },
-  { label: 'EcoLife Score', value: '82/100', icon: SparklesIcon, gradient: 'from-emerald-500 to-lime-500', ring: 82, accent: 'text-emerald-200' },
-  { label: 'Health Score', value: '64/100', icon: HeartIcon, gradient: 'from-sky-500 to-cyan-500', ring: 64, accent: 'text-sky-200' },
-  { label: 'Pollution Score', value: '71/100', icon: BoltIcon, gradient: 'from-violet-500 to-fuchsia-500', ring: 71, accent: 'text-violet-200' },
-  { label: 'Plastic Waste Score', value: '39/100', icon: CubeTransparentIcon, gradient: 'from-amber-500 to-yellow-500', ring: 39, accent: 'text-amber-200' },
-  { label: 'Tree Equivalent', value: '14 trees', icon: GlobeAltIcon, gradient: 'from-green-500 to-emerald-500', ring: 86, accent: 'text-green-200' },
-  { label: 'Potential CO2 Saving', value: '1.2 kg', icon: ArrowTrendingUpIcon, gradient: 'from-teal-500 to-emerald-500', ring: 74, accent: 'text-teal-200' },
-  { label: 'Money Saving Potential', value: '₹320', icon: CurrencyDollarIcon, gradient: 'from-indigo-500 to-blue-500', ring: 68, accent: 'text-indigo-200' }
-];
+function clamp(value, min = 0, max = 100) {
+  if (typeof value !== 'number' || Number.isNaN(value)) return min;
+  return Math.max(min, Math.min(max, value));
+}
 
 function ProgressRing({ value, gradient }) {
   const radius = 34;
@@ -34,7 +28,29 @@ function ProgressRing({ value, gradient }) {
   );
 }
 
-export default function ImpactScoreCards() {
+export default function ImpactScoreCards({ summary = {} }) {
+  const {
+    totalCarbon = 0,
+    ecoLifeScore = 0,
+    healthScore = 0,
+    pollutionScore = 0,
+    plasticScore = 0,
+    treeEquivalent = 0,
+    totalCarbonSaved = 0,
+    moneySavingPotential = 0
+  } = summary;
+
+  const metrics = [
+    { label: 'Total CO2 Emission', value: `${totalCarbon.toFixed(1)} kg`, icon: FireIcon, gradient: 'from-rose-500 to-orange-500', ring: clamp(totalCarbon * 4, 0, 100), accent: 'text-rose-200' },
+    { label: 'EcoLife Score', value: `${ecoLifeScore}/100`, icon: SparklesIcon, gradient: 'from-emerald-500 to-lime-500', ring: clamp(ecoLifeScore, 0, 100), accent: 'text-emerald-200' },
+    { label: 'Health Score', value: `${healthScore}/100`, icon: HeartIcon, gradient: 'from-sky-500 to-cyan-500', ring: clamp(healthScore, 0, 100), accent: 'text-sky-200' },
+    { label: 'Pollution Score', value: `${pollutionScore}/100`, icon: BoltIcon, gradient: 'from-violet-500 to-fuchsia-500', ring: clamp(100 - pollutionScore, 0, 100), accent: 'text-violet-200' },
+    { label: 'Plastic Waste Score', value: `${plasticScore}/100`, icon: CubeTransparentIcon, gradient: 'from-amber-500 to-yellow-500', ring: clamp(100 - plasticScore, 0, 100), accent: 'text-amber-200' },
+    { label: 'Tree Equivalent', value: `${treeEquivalent} trees`, icon: GlobeAltIcon, gradient: 'from-green-500 to-emerald-500', ring: clamp(Math.min(treeEquivalent, 100), 0, 100), accent: 'text-green-200' },
+    { label: 'Potential CO2 Saving', value: `${totalCarbonSaved.toFixed(1)} kg`, icon: ArrowTrendingUpIcon, gradient: 'from-teal-500 to-emerald-500', ring: clamp(totalCarbonSaved * 10, 0, 100), accent: 'text-teal-200' },
+    { label: 'Money Saving Potential', value: `₹${moneySavingPotential}`, icon: CurrencyDollarIcon, gradient: 'from-indigo-500 to-blue-500', ring: clamp(Math.min(moneySavingPotential / 10, 100), 0, 100), accent: 'text-indigo-200' }
+  ];
+
   return (
     <section className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
       {metrics.map((metric, index) => {

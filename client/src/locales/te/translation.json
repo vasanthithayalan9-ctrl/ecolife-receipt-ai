@@ -47,7 +47,36 @@
   },
   "receipt": {
     "title": "ప్రీమియం రసీదు విశ్లేషణ అనుభవం",
-    "description": "Tailwind CSS, Heroicons, React hooks మరియు motion ప్లేస్‌హోల్డర్లతో ఒక క్లియర్, పునః ఉపయోగించదగిన ఇంటర్‌ఫేస్."
+    "description": "Tailwind CSS, Heroicons, React hooks మరియు motion ప్లేస్‌హోల్డర్లతో ఒక క్లియర్, పునః ఉపయోగించదగిన ఇంటర్‌ఫేస్.",
+    "accessibility": {
+      "keyboardAccessible": {
+        "description": "Focusable inputs and buttons with visible focus states.",
+        "title": "Keyboard accessible"
+      },
+      "largeButtons": {
+        "title": "Large buttons",
+        "description": "Touch-friendly controls with generous spacing."
+      },
+      "darkMode": {
+        "description": "High-contrast visuals designed for low-light use.",
+        "title": "Dark Mode support"
+      },
+      "screenReader": {
+        "description": "Clear labels and aria attributes for assistive tech.",
+        "title": "Screen reader labels"
+      }
+    },
+    "accessibilityHeading": "Accessibility",
+    "accessibilitySectionLabel": "SECTION 11",
+    "demoItems": [
+      "Milk",
+      "Chicken",
+      "Plastic Bottle",
+      "Soft Drink",
+      "Rice",
+      "Soap"
+    ],
+    "sectionLabel": "SECTION 13"
   },
   "scanner": {
     "banner": "AI ఆధారిత రసీదు నిపుణ్యం",
@@ -93,7 +122,8 @@
     "listeningStatus": "మీ వాయిస్ కమాండ్ కోసం వినిస్తోంది...",
     "unsupportedSpeech": "ఈ బ్రౌజర్ స్పీచ్ సింథసిస్‌కు మద్దతు ఇవ్వదు.",
     "error": "వాయిస్ ఇన్‌పుట్ లోపం: {{error}}",
-    "close": "మూసివేయండి"
+    "close": "మూసివేయండి",
+    "optionsTitle": "Options"
   },
   "voiceSummary": {
     "title": "EcoVoice సారాంశం",
@@ -122,6 +152,194 @@
     "heading": "ఒక రసీదును అప్‌లోడ్ చేయండి లేదా నమూనా ప్రివ్యూ చూడండి",
     "loadDemo": "డెమో రసీదు లోడ్ చేయండి",
     "previewTitle": "ప్రివ్యూ",
-    "previewPlaceholder": "విశ్లేషణకు ముందు నమూనా రసీదును అన్వేషించడానికి బటన్‌ను క్లిక్ చేయండి."
+    "previewPlaceholder": "విశ్లేషణకు ముందు నమూనా రసీదును అన్వేషించడానికి బటన్‌ను క్లిక్ చేయండి.",
+    "description": "Modern intake experience with guided OCR support and premium previews.",
+    "uploadArea": "Receipt upload area"
+  },
+  "recommendationPanel": {
+    "heading": "EcoLife AI Recommendations",
+    "list": [
+      "Replace plastic products with reusable or refillable options.",
+      "Prefer local products to reduce transport emissions.",
+      "Reduce sugary drinks and choose water or herbal tea.",
+      "Choose reusable packaging whenever possible.",
+      "Buy seasonal items for better freshness and lower impact."
+    ],
+    "title": "AI Recommendations"
+  },
+  "cityMapPlaceholder": {
+    "highAdoptionZone": "High adoption zone",
+    "neighborhoodView": "Neighborhood view",
+    "communityHubs": "14 community hubs",
+    "title": "A city map preview for your simulation",
+    "description": "The visual shows clustered neighborhoods where eco swaps could be amplified through schools, local markets, and community campaigns."
+  },
+  "resultsHero": {
+    "heading": "Your Receipt Impact Report",
+    "statusText": "Analysis ready",
+    "description": "Understand what your shopping choices mean for your health, environment, and city.",
+    "statusTag": "Premium Eco Intelligence"
+  },
+  "cityReportActions": {
+    "continueFamilyDashboard": "Continue to family dashboard",
+    "exportReport": "Export report",
+    "sharePreview": "Share preview"
+  },
+  "betterChoiceExplanation": {
+    "plasticBottle": {
+      "better": "A steel bottle is reusable, durable, and cuts repeated packaging waste.",
+      "title": "Plastic Bottle",
+      "impact": "If many people switch, city waste collection and landfill pressure can drop significantly.",
+      "harmful": "Single-use plastic creates long-lived waste and adds to litter and microplastic pollution."
+    },
+    "softDrink": {
+      "better": "Fresh juice or water offers better nutrition and lower transport impact.",
+      "title": "Soft Drink",
+      "impact": "Widespread adoption can improve public health and reduce sugary-drink demand.",
+      "harmful": "Sugary beverages contribute to poor health outcomes and excess packaging waste."
+    },
+    "cityImpact": "City impact:",
+    "chicken": {
+      "better": "Lentils deliver protein with significantly lower emissions and less land use.",
+      "title": "Chicken",
+      "harmful": "Meat production often carries a higher environmental burden and can be resource-intensive.",
+      "impact": "A city-wide shift can reduce food system emissions and improve dietary patterns."
+    },
+    "whyCurrentIsHarmful": "Why current is harmful:",
+    "title": "Better Choice Explanation",
+    "heading": "Why these replacements make sense",
+    "whyAlternativeIsBetter": "Why alternative is better:"
+  },
+  "badgeRewards": {
+    "heading": "Celebrate your better basket",
+    "lowCarbonShopper": {
+      "description": "Your basket lowers emissions and waste.",
+      "title": "Low Carbon Shopper"
+    },
+    "cityGreenContributor": {
+      "title": "City Green Contributor",
+      "description": "Your choices support a cleaner city."
+    },
+    "healthyChoiceMaker": {
+      "title": "Healthy Choice Maker",
+      "description": "Your food swaps improve nutrition quality."
+    },
+    "title": "Badge Rewards",
+    "plasticSaver": {
+      "description": "You cut single-use plastic dramatically.",
+      "title": "Plastic Saver"
+    }
+  },
+  "analysisPreview": {
+    "heading": "Eco score and alternatives",
+    "chooseLocalProduce": "Choose local produce over imported goods",
+    "swapPlasticBottle": "Swap plastic bottle for reusable bottle",
+    "overallEcoScore": "Overall eco score",
+    "title": "Analysis Preview",
+    "suggestedAlternatives": "Suggested alternatives"
+  },
+  "cityImpactHero": {
+    "statusTag": "EcoLife AI",
+    "heading": "Your Choice Can Change a City",
+    "statusHeading": "City-scale impact",
+    "description": "Simulate how small product replacements can reduce carbon, plastic waste, and health risks across your city.",
+    "tag": "City Impact Simulator"
+  },
+  "betterBasketHero": {
+    "statusHeading": "Smarter swaps",
+    "heading": "Build a Better Basket",
+    "statusTag": "EcoLife AI",
+    "description": "See how small shopping changes can reduce carbon, improve health, and protect your city.",
+    "tag": "Better Basket Generator"
+  },
+  "actionButtons": {
+    "viewCityImpact": "View City Impact",
+    "saveToFamilyDashboard": "Save to Family Dashboard",
+    "backToResults": "Back to Results",
+    "downloadBasketReport": "Download Basket Report",
+    "acceptBetterBasket": "Accept Better Basket"
+  },
+  "receiptSummary": {
+    "stats": {
+      "localProducts": "Local Products",
+      "healthyProducts": "Healthy Products",
+      "organicProducts": "Organic Products",
+      "totalProducts": "Total Products",
+      "importedProducts": "Imported Products",
+      "highCarbonProducts": "High Carbon Products",
+      "plasticProducts": "Plastic Products"
+    },
+    "heading": "Receipt Summary",
+    "showButton": "Show",
+    "description": "Overview of product categories detected on the receipt.",
+    "sectionLabel": "SECTION 6"
+  },
+  "ecoVoiceCityNarrator": {
+    "playButton": "Play summary",
+    "heading": "Your city could cut waste faster when families switch to healthier, lower-impact products."
+  },
+  "manualBillEntry": {
+    "title": "Manual Bill Entry",
+    "shopNameLabel": "Shop name",
+    "analyzeButton": "Analyze receipt",
+    "shopNamePlaceholder": "Shop name",
+    "heading": "Complete your entry quickly",
+    "quantityLabel": "Quantity",
+    "itemNameLabel": "Item name",
+    "itemNamePlaceholder": "Item name",
+    "quantityPlaceholder": "Quantity"
+  },
+  "topProblemItems": {
+    "items": [
+      {
+        "name": "Plastic Bottle",
+        "problem": "High plastic waste and frequent single-use packaging.",
+        "replacement": "Reusable bottle",
+        "impact": "Cuts waste by 80% and lowers carbon footprint."
+      },
+      {
+        "name": "Soft Drink",
+        "problem": "High sugar content and elevated transport footprint.",
+        "replacement": "Sparkling water or local tea",
+        "impact": "Improves health score and reduces emissions."
+      },
+      {
+        "name": "Imported Apple",
+        "problem": "Long-distance transport adds avoidable emissions.",
+        "replacement": "Local apple",
+        "impact": "Reduces transport emissions significantly."
+      }
+    ],
+    "heading": "Top 3 harmful products from the receipt",
+    "title": "Top Problems"
+  },
+  "simulator": {
+    "title": "City impact simulator",
+    "description": "Model how greener purchases can lower city-wide emissions and pollution."
+  },
+  "receiptValidation": {
+    "sectionLabel": "SECTION 7",
+    "warnings": {
+      "duplicateProduct": {
+        "label": "Duplicate Product"
+      },
+      "unknownProduct": {
+        "label": "Unknown Product"
+      },
+      "unreadableProduct": {
+        "label": "Unreadable Product"
+      },
+      "missingQuantity": {
+        "label": "Missing Quantity"
+      }
+    },
+    "warningDetail": "Show warnings using colored badges.",
+    "heading": "Receipt Validation",
+    "description": "Before analysis verify"
+  },
+  "ocrPreview": {
+    "noItemsDetected": "No items detected yet.",
+    "heading": "Recognized items",
+    "title": "OCR Preview"
   }
 }

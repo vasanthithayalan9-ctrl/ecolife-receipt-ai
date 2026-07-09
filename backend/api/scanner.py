@@ -27,15 +27,56 @@ async def upload_receipt(file: UploadFile = File(...)) -> dict:
     contents = await file.read()
     saved_path.write_bytes(contents)
 
-    raw_text = ocr_engine.extract_text(saved_path)
-    products = ocr_engine.extract_products(raw_text)
+    products = ocr_engine.extract_products(saved_path)
+    ocr_confidence = (
+        round(sum(item.get('confidence', 0.0) for item in products) / len(products), 2)
+        if products else 0.0
+    )
 
     return {
         "message": "Receipt uploaded and processed",
         "filename": file.filename or "receipt.jpg",
         "saved_path": str(saved_path),
         "products": products,
+        "ocr_confidence": ocr_confidence,
         "status": "ocr_ready",
+    }
+
+
+@router.post("/extract")
+async def extract_receipt_data() -> dict:
+    """Run the full modular product pipeline for demo data."""
+    raw_text = "demo receipt text"
+    products = ocr_engine.extract_products(raw_text)
+
+    analyzed_products = []
+    for product in products:
+        carbon_result = carbon_engine.analyze_product(product)
+        health_result = health_engine.analyze_product(product)
+        pollution_result = pollution_engine.analyze_product(product)
+        recommendation_result = recommendation_engine.suggest_alternative(product)
+        score = scoring_engine.calculate_score(
+            carbon_result=carbon_result,
+            health_result=health_result,
+            pollution_result=pollution_result,
+            recommendation_result=recommendation_result,
+        )
+
+        analyzed_products.append(
+            {
+                "product": product,
+                "carbon": carbon_result,
+                "health": health_result,
+                "pollution": pollution_result,
+                "recommendation": recommendation_result,
+                "score": score,
+            }
+        )
+
+    return {
+        "message": "Receipt extraction pipeline ready",
+        "products": analyzed_products,
+        "status": "pipeline_ready",
     }
 
 

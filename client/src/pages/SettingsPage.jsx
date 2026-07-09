@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { voiceLanguages } from '../utils/languageHelpers';
 
@@ -7,6 +7,10 @@ export default function SettingsPage() {
   const [voiceGuidance, setVoiceGuidance] = useState(true);
   const [showRecommendations, setShowRecommendations] = useState(true);
   const [language, setLanguage] = useState(i18n.language || 'en');
+
+  useEffect(() => {
+    setLanguage(i18n.language || 'en');
+  }, [i18n.language]);
 
   function handleLanguageChange(targetLanguage) {
     setLanguage(targetLanguage);

@@ -1,7 +1,9 @@
 import { EyeIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export default function OCRPreview({ items = [] }) {
+  const { t } = useTranslation();
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -14,8 +16,8 @@ export default function OCRPreview({ items = [] }) {
           <EyeIcon className="h-6 w-6" />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300">OCR Preview</p>
-          <h2 className="mt-1 text-2xl font-semibold text-white">Recognized items</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300">{t('ocrPreview.title')}</p>
+          <h2 className="mt-1 text-2xl font-semibold text-white">{t('ocrPreview.heading')}</h2>
         </div>
       </div>
 
@@ -26,7 +28,7 @@ export default function OCRPreview({ items = [] }) {
               {item}
             </span>
           )) : (
-            <span className="text-sm text-emerald-100/70">No items detected yet.</span>
+            <span className="text-sm text-emerald-100/70">{t('ocrPreview.noItemsDetected')}</span>
           )}
         </div>
       </div>

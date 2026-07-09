@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import analyticsRoutes from './routes/analytics.js';
@@ -30,7 +31,20 @@ app.use('/api/analytics', analyticsRoutes);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, '../public')));
+const clientBuildPath = path.join(__dirname, '../client/dist');
+
+if (fs.existsSync(clientBuildPath)) {
+  app.use(express.static(clientBuildPath));
+  app.get('*', (_req, res) => {
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
+} else {
+  app.get('/', (_req, res) => {
+    res.send(
+      'EcoLife Receipt AI backend is running. Start the frontend with `npm run dev` and open http://localhost:5173/ to view the app.'
+    );
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

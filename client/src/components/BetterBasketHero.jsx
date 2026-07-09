@@ -1,7 +1,10 @@
 import { SparklesIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export default function BetterBasketHero() {
+  const { t } = useTranslation();
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -13,19 +16,17 @@ export default function BetterBasketHero() {
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-200">
             <SparklesIcon className="h-4 w-4" />
-            Better Basket Generator
+            {t('betterBasketHero.tag')}
           </div>
-          <h1 className="mt-4 text-4xl font-semibold text-white sm:text-5xl">Build a Better Basket</h1>
-          <p className="mt-4 text-lg text-emerald-100/75">
-            See how small shopping changes can reduce carbon, improve health, and protect your city.
-          </p>
+          <h1 className="mt-4 text-4xl font-semibold text-white sm:text-5xl">{t('betterBasketHero.heading')}</h1>
+          <p className="mt-4 text-lg text-emerald-100/75">{t('betterBasketHero.description')}</p>
         </div>
         <div className="rounded-[1.5rem] border border-emerald-500/20 bg-emerald-500/10 p-5 text-emerald-100/80">
           <div className="flex items-center gap-3">
             <GlobeAltIcon className="h-8 w-8 text-emerald-300" />
             <div>
-              <p className="text-sm text-emerald-200/80">EcoLife AI</p>
-              <p className="text-xl font-semibold text-white">Smarter swaps</p>
+              <p className="text-sm text-emerald-200/80">{t('betterBasketHero.statusTag')}</p>
+              <p className="text-xl font-semibold text-white">{t('betterBasketHero.statusHeading')}</p>
             </div>
           </div>
         </div>
