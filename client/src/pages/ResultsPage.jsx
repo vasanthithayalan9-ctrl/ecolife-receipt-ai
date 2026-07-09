@@ -10,7 +10,9 @@ import ChartsSection from '../components/ChartsSection';
 import TopProblemItems from '../components/TopProblemItems';
 import AIRecommendationPanel from '../components/AIRecommendationPanel';
 import EcoVoiceSummary from '../components/EcoVoiceSummary';
+import EcoVoiceAssistant from '../components/EcoVoiceAssistant';
 import ReportActions from '../components/ReportActions';
+import { generateEcoLifePDF } from '../utils/reportGenerator';
 
 function normalizeText(value) {
   return String(value || '').trim().toLowerCase();
@@ -158,8 +160,8 @@ export default function ResultsPage() {
     return lines.join('\n');
   }, [analysis, totalCarbon, ecoLifeScore, healthScore, pollutionScore, plasticScore, treeEquivalent, totalCarbonSaved, moneySavingPotential]);
 
-  const handleDownloadReport = () => {
-    window.alert('PDF report will be generated in next step');
+  const handleDownloadReport = async () => {
+    await generateEcoLifePDF(analysis);
   };
 
   const handleShareReport = async () => {
@@ -264,6 +266,7 @@ export default function ResultsPage() {
       <TopProblemItems />
       <AIRecommendationPanel recommendations={recommendations} />
       <EcoVoiceSummary />
+      <EcoVoiceAssistant />
       <ReportActions
         onDownload={handleDownloadReport}
         onShare={handleShareReport}

@@ -11,6 +11,8 @@ import BetterChoiceExplanation from '../components/BetterChoiceExplanation';
 import EcoVoiceBasketAssistant from '../components/EcoVoiceBasketAssistant';
 import ActionButtons from '../components/ActionButtons';
 import BadgeRewardSection from '../components/BadgeRewardSection';
+import EcoVoiceAssistant from '../components/EcoVoiceAssistant';
+import { generateEcoLifePDF } from '../utils/reportGenerator';
 
 function normalizeText(value) {
   return String(value || '').trim().toLowerCase();
@@ -193,8 +195,8 @@ export default function BetterBasketPage() {
     }
   };
 
-  const handleDownloadBasketReport = () => {
-    window.alert('PDF report will be generated in next step');
+  const handleDownloadBasketReport = async () => {
+    await generateEcoLifePDF(analysis);
   };
 
   const handleViewCityImpact = () => {
@@ -240,6 +242,7 @@ export default function BetterBasketPage() {
       />
       <BetterChoiceExplanation />
       <EcoVoiceBasketAssistant />
+      <EcoVoiceAssistant />
       <ActionButtons
         onAcceptBetterBasket={handleAcceptBetterBasket}
         onSaveFamilyDashboard={handleSaveFamilyDashboard}
