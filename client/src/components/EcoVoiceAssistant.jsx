@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { SpeakerWaveIcon, MicrophoneIcon, StopIcon } from '@heroicons/react/24/outline';
 import { products as productCatalog } from '../data/products';
+import { buildApiUrl } from '../utils/api';
 
 const languageOptions = [
   { id: 'en', label: 'English', speech: 'en-US' },
@@ -180,7 +181,7 @@ export default function EcoVoiceAssistant() {
 
     try {
       setStatus('Generating AI voice...');
-      const response = await fetch('/api/voice/tts', {
+      const response = await fetch(buildApiUrl('/api/voice/tts'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text, language })

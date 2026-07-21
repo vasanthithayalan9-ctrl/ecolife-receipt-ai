@@ -1,12 +1,20 @@
 # EcoLife Receipt AI
 
-A full-stack green commerce demo app built with React + Vite + Tailwind CSS on the frontend, Node + Express on the backend, and JSON-file storage for hackathon-friendly demo data.
+A production-ready green commerce experience built with a Vite + React frontend and a FastAPI backend for receipt analysis, carbon scoring, health insights, recommendations, and reporting.
 
 ## Structure
-- client/: React/Vite frontend with route-based starter pages
-- server/: Express backend with a simple health/demo API
+- client/: Vite + React + Tailwind frontend
+- backend/: FastAPI backend with OCR, analysis, voice, and reporting routes
+- render.yaml: Render deployment manifest
+- vercel.json: Vercel deployment manifest
 
 ## Run locally
 1. Install dependencies: npm install
-2. Start both apps: npm run dev
-3. Open the client at http://localhost:5173
+2. Start the stack: npm run dev
+3. Open the frontend at http://localhost:5173
+4. Backend health check: http://localhost:5000/api/health
+
+## Production deployment
+- Frontend: Vercel with Vite build output `dist`
+- Backend: Render with `uvicorn main:app --host 0.0.0.0 --port $PORT`
+- Configure environment variables from the `.env.example` files in the frontend/backend directories

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { buildApiUrl } from '../utils/api';
 
 export default function ReceiptActions({ onReset } ) {
   const { t } = useTranslation();
@@ -28,7 +29,7 @@ export default function ReceiptActions({ onReset } ) {
     setAnalyzing(true);
     setStepIndex(0);
     try {
-      await fetch('/api/analytics/summary');
+      await fetch(buildApiUrl('/api/analytics/summary'));
       // future: navigate to results or show analysis
     } catch (e) {
       // ignore network errors for now

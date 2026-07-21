@@ -42,6 +42,22 @@ class RecommendationEngine:
         except Exception:
             return 0.0
 
+    def suggest_alternative(self, product: dict[str, Any]) -> dict[str, Any]:
+        if not isinstance(product, dict):
+            return {"current_product": product, "alternative_product": None, "reason": "No recommendation available"}
+
+        name = product.get("name")
+        alt_map = self.get_alternative(name)
+        if not alt_map:
+            return {"current_product": name, "alternative_product": None, "reason": "No recommendation available"}
+
+        return {
+            "current_product": name,
+            "alternative_product": alt_map.get("replacement"),
+            "reason": alt_map.get("reason", "Lower impact option available"),
+            "cost_note": alt_map.get("cost_note", "May vary by store"),
+        }
+
     def generate_recommendations(self, items: List[dict[str, Any]]) -> List[dict[str, Any]]:
         from services.carbon_engine import CarbonEngine
         from services.health_engine import HealthEngine

@@ -10,9 +10,17 @@ class HealthEngine:
         self.name = "HealthEngine"
         self.map = {"low": 90, "medium": 60, "high": 30}
 
-    def calculate_health_score(self, product: Dict[str, Any]) -> Dict[str, Any]:
-        # product expected to have `health_risk` field or name
-        risk = str(product.get("health_risk", "medium")).lower()
+    def analyze_product(self, product: Dict[str, Any]) -> Dict[str, Any]:
+        if isinstance(product, dict):
+            risk = str(product.get("health_risk", "medium")).lower()
+            name = product.get("name")
+        else:
+            risk = "medium"
+            name = product
+
         score = int(self.map.get(risk, 60))
-        return {"product": product.get("name"), "health_risk": risk, "health_score": score}
+        return {"product": name, "health_risk": risk, "health_score": score}
+
+    def calculate_health_score(self, product: Dict[str, Any]) -> Dict[str, Any]:
+        return self.analyze_product(product)
 

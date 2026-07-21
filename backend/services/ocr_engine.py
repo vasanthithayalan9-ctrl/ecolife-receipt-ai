@@ -5,9 +5,17 @@ import re
 from statistics import mean
 from typing import Any
 
-from PIL import Image
-import pytesseract
-from pytesseract import Output
+try:
+    from PIL import Image
+except Exception:  # pragma: no cover - optional dependency in some environments
+    Image = None
+
+try:
+    import pytesseract
+    from pytesseract import Output
+except Exception:  # pragma: no cover - optional dependency in some environments
+    pytesseract = None
+    Output = None
 
 
 class OcrEngine:
@@ -22,14 +30,26 @@ class OcrEngine:
 
     def extract_text(self, file_path: str | Path) -> str:
         """Extract raw OCR text from the receipt image."""
-        image = Image.open(file_path)
-        image = image.convert('L')
-        return pytesseract.image_to_string(image, lang='eng')
+        if Image is None or pytesseract is None:
+            return ""
+
+        try:
+            image = Image.open(file_path)
+            image = image.convert('L')
+            return pytesseract.image_to_string(image, lang='eng')
+        except Exception:
+            return ""
 
     def extract_products(self, file_path: str | Path) -> list[dict[str, Any]]:
         """Extract structured product name, quantity, price, and confidence."""
-        image = Image.open(file_path).convert('L')
-        data = pytesseract.image_to_data(image, output_type=Output.DICT)
+        if Image is None or pytesseract is None or Output is None:
+            return self._fallback_extract("")
+
+        try:
+            image = Image.open(file_path).convert('L')
+            data = pytesseract.image_to_data(image, output_type=Output.DICT)
+        except Exception:
+            return self._fallback_extract("")
 
         lines: dict[tuple[int, int, int, int], dict[str, Any]] = {}
         for index, word in enumerate(data['text']):

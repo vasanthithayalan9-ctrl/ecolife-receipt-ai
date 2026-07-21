@@ -73,6 +73,17 @@ class CarbonEngine:
         carbon = round(qty * factor, 3)
         return {"product": product_name, "carbon": carbon, "factor": factor, "confidence": "low"}
 
+    def analyze_product(self, product: Dict[str, Any]) -> Dict[str, Any]:
+        name = product.get("name") if isinstance(product, dict) else product
+        quantity = float(product.get("quantity", 1)) if isinstance(product, dict) else 1.0
+        result = self.calculate_item_carbon(name, quantity)
+        return {
+            "product": result.get("product"),
+            "carbon": result.get("carbon"),
+            "factor": result.get("factor"),
+            "confidence": result.get("confidence"),
+        }
+
     def calculate_total_carbon(self, items: List[Dict[str, Any]]) -> Dict[str, Any]:
         total = 0.0
         details: List[dict[str, Any]] = []

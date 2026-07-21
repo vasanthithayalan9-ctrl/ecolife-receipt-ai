@@ -16,6 +16,14 @@ class ScoringEngine:
     def __init__(self) -> None:
         self.name = "ScoringEngine"
 
+    def calculate_score(self, carbon_result: dict[str, Any], health_result: dict[str, Any], pollution_result: dict[str, Any], recommendation_result: dict[str, Any]) -> float:
+        carbon_value = float(carbon_result.get("carbon", 0.0) or 0.0)
+        health_value = float(health_result.get("health_score", 0.0) or 0.0)
+        pollution_value = float(pollution_result.get("pollution_score", 0.0) or 0.0)
+        recommendation_value = 100.0 if recommendation_result.get("alternative_product") else 0.0
+        score = (100.0 - min(100.0, carbon_value * 2.0)) * 0.4 + health_value * 0.3 + (100.0 - pollution_value) * 0.2 + recommendation_value * 0.1
+        return round(max(0.0, min(100.0, score)), 2)
+
     def calculate_ecolife_score(self, total_carbon: float, health_scores: Iterable[float], pollution_scores: Iterable[float], plastic_scores: Iterable[float]) -> float:
         # Normalize components to 0-100
         try:

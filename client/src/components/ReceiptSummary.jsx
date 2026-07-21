@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { buildApiUrl } from '../utils/api';
 
 export default function ReceiptSummary() {
   const { t } = useTranslation();
@@ -7,7 +8,7 @@ export default function ReceiptSummary() {
 
   useEffect(() => {
     let mounted = true;
-    fetch('/api/analytics/summary')
+    fetch(buildApiUrl('/api/analytics/summary'))
       .then((r) => r.json())
       .then((json) => {
         if (!mounted) return;

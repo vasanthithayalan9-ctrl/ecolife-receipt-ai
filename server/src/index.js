@@ -41,7 +41,7 @@ if (fs.existsSync(clientBuildPath)) {
 } else {
   app.get('/', (_req, res) => {
     res.send(
-      'EcoLife Receipt AI backend is running. Start the frontend with `npm run dev` and open http://localhost:5173/ to view the app.'
+      'EcoLife Receipt AI backend is running. Start the frontend development server to view the app.'
     );
   });
 }
