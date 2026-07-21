@@ -7,8 +7,15 @@ import analyticsRoutes from './routes/analytics.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const clientUrl = process.env.CLIENT_URL || '';
+const allowedOrigins = [clientUrl].filter(Boolean);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: allowedOrigins.length > 0 ? allowedOrigins : true,
+    credentials: true
+  })
+);
 app.use(express.json());
 
 app.get('/api/health', (_req, res) => {
